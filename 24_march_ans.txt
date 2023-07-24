@@ -1,0 +1,171 @@
+#### Q1. What are the key features of the wine quality data set? Discuss the importance of each feature in predicting the quality of wine.
+- In order to predict the quality of wine, the dataset contains 12 crucial features. These features are listed below:
+#
+1. Fixed acidity: This feature represents the concentration of non-volatile acids present in the wine. It plays a significant role in determining the overall taste and balance of the wine.
+#
+2. Volatile acidity: This feature represents the concentration of acetic acid present in the wine. Excessive volatile acidity can make the wine taste and smell like vinegar, which is certainly undesirable.
+#
+3. Citric acid: This weak organic acid is found in small amounts in wine, but it is important because it adds freshness and complexity to it.
+#
+4. Residual sugar: This feature indicates how much sugar remains in the wine after fermentation. It is an essential characteristic as it impacts how sweet or dry a particular type of wine may be.
+#
+5. Chlorides: The concentration of salts present in the wine is referred to as chlorides. High levels can indicate poor winemaking practices, while low levels are desirable for optimal taste.
+#
+6. Free sulfur dioxide: The amount of sulfur dioxide added to preserve wines is known as free sulfur dioxide; this helps prevent oxidation and microbial spoilage.
+#
+7. Total sulfur dioxide: Total sulfur dioxide refers to both free and bound amounts present within a given volume or batch - high levels could signify poor winemaking practices.
+#
+8. Density: Density measures mass per unit volume; this property indicates alcohol content and sweetness level within a particular batch or bottle.
+#
+9. pH: pH measures acidity or alkalinity levels within a given sample - this property influences color, stability, aroma, and flavor profile within different types of wines.
+#
+10. Sulphates: Sulphates serve as preservatives that act as antioxidants; higher concentrations may suggest suboptimal winemaking techniques.
+#
+11. Alcohol percentage by volume (ABV): Alcohol percentage by volume refers to how much alcohol is present in the wine - this property has a significant impact on the taste, aroma, and body of the wine.
+#
+12. Quality (score between 0 and 10): This is a subjective measure of overall quality based on sensory evaluations - this is the target variable that we are trying to predict.
+#### Q2. How did you handle missing data in the wine quality data set during the feature engineering process? Discuss the advantages and disadvantages of different imputation techniques.
+- There are no missing values in the wine dataset.
+#
+- However, advantages and disadvantages of different impuatation techniques are:
+- There are several techniques available for imputing missing data in a dataset.
+1. Mean Imputation
+    - where missing values are replaced with the mean value of the feature.
+    - Advantage
+        - This technique is simple and easy to implement.
+    - Disadvantage
+        - The missing values are completely random and that the mean value is representative of the missing values, which may not always be true.
+        #
+2. Median Imputation
+    - It is preffered while dealing with skewed data.
+    - This method replaces missing values with the median value of the feature
+    - Advantage
+        - It is more robust to outliers compared to mean imputation.
+    - Disadvantage
+        - It assumes that the missing values are completely random.
+        #
+3. Regression Imputation
+    - It involves using a regression model to predict missing values based on other features in the dataset.
+    - Advantage
+        - It can be more accurate than mean or median imputation as it takes into account relationships between features.
+    - Disadvantage
+        - This method assumes that the missing data is not biased and that the regression model used is correctly specified.
+        #
+4. Multiple imputation
+    - It creates multiple datasets based on distributions of existing data and combines them to obtain more accurate estimates of missing values.
+    - Advantage
+        - This method accounts for uncertainty associated with imputing data.
+    - Disadvantage
+        - It is computationally intensive and impractical for large datasets.
+#### Q3. What are the key factors that affect students' performance in exams? How would you go about analyzing these factors using statistical techniques?
+- The key factors that affect students' performance in exams are:
+    - lunch
+        - Standard lunch help students perform well in exams.
+    - gender
+        - Female student tend to perform well than male students.
+    - race_ethnicity
+        - Students of group A and group B tends to perform poorly in exam.
+        #
+- To analyze the above factors, I have used histogram visualisation technique.}
+#### Q4. Describe the process of feature engineering in the context of the student performance data set. How did you select and transform the variables for your model?
+- The process of feature engineering in the context of the student performance data set includes:
+    - Check Missing values
+    - Check Duplicates
+    - Check data type
+    - Check the number of unique values of each column
+    - Check statistics of data set
+    - Check various categories present in the different categorical column
+#
+- To transform the variables for the model includes:
+    - Handling missing data
+    - Encoding categorical variables:
+#### Q5. Load the wine quality data set and perform exploratory data analysis (EDA) to identify the distribution of each feature. Which feature(s) exhibit non-normality, and what transformations could be applied to these features to improve normality?
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("winequality-red.csv")
+
+l = df.columns.values
+number_of_columns = 12
+number_of_rows = int(len(l)-1/number_of_columns)
+
+plt.figure(figsize=(2*number_of_columns, 5*number_of_rows))
+for i in range(0, len(l)):
+    plt.subplot(number_of_rows + 1, number_of_columns, i+1)
+    sns.histplot(df[l[i]], kde=True)
+- From the above visualization, the features exhibiting non-normality are:
+    - Volatile Acidity
+    - citric acid
+    - residual sugar
+    - chlorides
+    - free sulfur dioxide
+    - total sulfur dioxide
+    - sulphates
+    - alcohol
+#
+- Transformations techniques that can be applied to these features to improve normality are :
+    1. Log transformation
+        - This is one of the most commonly used transformations for normalizing data.
+        - It is particularly useful when the data is skewed to the right (i.e., positively skewed).
+        - A log transformation can help to reduce the skewness of the data by compressing large values and expanding small values.
+        #
+    2. Square root transformation
+        - This transformation is useful when the data is skewed to the right and the values are positive.
+        - It can help to reduce the skewness and make the data more symmetric.
+        #
+    3. Box-Cox transformation
+        - The Box-Cox transformation is useful when the data is skewed and the skewness cannot be corrected by a simple transformation.
+        - It involves finding the best transformation parameter lambda that maximizes the normality of the data.
+        - This is a family of transformations that includes both the log transformation and the square root transformation.
+        #
+    4. Reciprocal transformation
+        - This transformation is useful when the data is skewed to the left (i.e., negatively skewed).
+        - It can help to make the data more symmetric.
+    #
+    5. Exponential transformation
+        - This transformation is useful when the data is skewed to the left and the values are positive.
+        - It can help to make the data more symmetric and reduce the skewness.
+#### Q6. Using the wine quality data set, perform principal component analysis (PCA) to reduce the number of features. What is the minimum number of principal components required to explain 90% of the variance in the data?
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("winequality-red.csv")
+df.head()
+##### We will remove the ‘Quality’ of the wine as it is the target feature.
+
+df.drop(columns=['quality'], inplace=True)
+df.head()
+##### Now we will scale the data
+from sklearn.preprocessing import StandardScaler
+scalar = StandardScaler()
+df_scaled = pd.DataFrame(scalar.fit_transform(df), columns=df.columns)
+df_scaled
+
+##### Now we are ready to apply for PCA.
+from sklearn.decomposition import PCA
+
+pca = PCA()
+df_pca = pd.DataFrame(pca.fit_transform(df_scaled))
+df_pca
+##### Now, we will look for variance for each  of the PCA components
+import matplotlib.pyplot as plt
+pd.DataFrame(pca.explained_variance_ratio_).plot.bar()
+plt.legend('')
+plt.xlabel('Principal Components')
+plt.ylabel('Explained Varience');
+##### plot line graph of cumulative variance explained
+import numpy as np
+plt.plot(np.cumsum(pca.explained_variance_ratio_))
+plt.xlabel('Number of components')
+plt.ylabel('Cumulative explained variance');
+pca_9 = PCA(.9)
+pca_9.fit_transform(df_scaled)
+print(
+    "Minimum no of PCA components required to explain ~", round(
+        pca_9.explained_variance_ratio_.sum()*100, 2), "of variance in the data is",
+    pca_9.n_components_,
+    "components.")
+
+- Minimum no of PCA components required to explain ~ 90.83 of variance in the data is 7 components.
