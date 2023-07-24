@@ -1,0 +1,63 @@
+Q1. Explain the concept of R-squared in linear regression models. How is it calculated, and what does it represent?
+
+    Ans: R-squared is a statistical measure that represents the proportion of the variance in the dependent variable that is explained by the independent variable(s) in a 
+         linear regression model. It ranges from 0 to 1, with 1 indicating a perfect fit of the model to the data. It is calculated by dividing the explained variance 
+         by the total variance of the dependent variable.
+
+Q2. Define adjusted R-squared and explain how it differs from the regular R-squared.
+
+    Ans: Adjusted R-squared is a modified version of R-squared that takes into account the number of independent variables used in a regression model. 
+         Unlike regular R-squared, adjusted R-squared penalizes the addition of unnecessary independent variables, making it a better measure of a model's goodness of fit.
+
+Q3. When is it more appropriate to use adjusted R-squared?
+
+    Ans: Adjusted R-squared is more appropriate when comparing multiple regression models with different numbers of independent variables. 
+         It adjusts for the number of variables in the model, penalizing models with too many variables that do not contribute significantly to the model's overall fit.
+
+Q4. What are RMSE, MSE, and MAE in the context of regression analysis? How are these metrics calculated, and what do they represent?
+
+    Ans: RMSE, MSE, and MAE are metrics used to evaluate the performance of regression models. RMSE represents the root mean squared error, 
+         MSE represents the mean squared error, and MAE represents the mean absolute error. These metrics measure the difference between 
+         the predicted and actual values of the target variable, with RMSE and MSE giving more weight to larger errors.
+
+Q5. Discuss the advantages and disadvantages of using RMSE, MSE, and MAE as evaluation metrics in regression analysis.
+
+    Ans: RMSE and MSE take into account the magnitude of errors, giving more weight to larger errors. This means that these metrics can be more sensitive to outliers, 
+         which are data points that are significantly different from other data points. On the other hand, MAE treats all errors equally and is more robust to outliers.
+         One disadvantage of RMSE, MSE, and MAE is that they do not provide information about the direction of errors, i.e., whether the model is overestimating or 
+         underestimating the target variable. Another disadvantage is that they do not take into account the relative importance of different types of errors.
+
+Q6. Explain the concept of Lasso regularization. How does it differ from Ridge regularization, and when is it more appropriate to use?
+
+    Ans: Lasso regularization is a technique used to prevent overfitting in linear regression models by adding a penalty term to the cost function. 
+         It differs from Ridge regularization in that it shrinks some of the model coefficients to zero, effectively performing feature selection. 
+         Lasso regularization is more appropriate when the number of features is large and only a few are expected to be important.
+
+Q7. How do regularized linear models help to prevent overfitting in machine learning? Provide an example to illustrate.
+
+    Ans: Regularized linear models are a type of machine learning algorithm that can help prevent overfitting. They work by adding a penalty term to the loss function, 
+         which discourages the model from overemphasizing any one feature or parameter. This encourages the model to generalize better to new data, 
+         rather than simply memorizing the training data. For example, Lasso regression is a type of regularized linear model that can be used to select important 
+         features and reduce overfitting in a dataset by shrinking the coefficients of less important features towards zero.
+
+Q8. Discuss the limitations of regularized linear models and explain why they may not always be the best choice for regression analysis.
+
+    Ans: limitation is that they assume a linear relationship between the dependent and independent variables, which may not be true in real-world scenarios. 
+         Additionally, regularized linear models require tuning of the regularization parameter, which can be time-consuming and requires expertise. 
+         As a result, other non-linear regression models may be better suited for more complex data.
+
+Q9. You are comparing the performance of two regression models using different evaluation metrics. Model A has an RMSE of 10, while Model B has an MAE of 8. 
+       Which model would you choose as the better performer, and why? Are there any limitations to your choice of metric?
+       
+    Ans: The choice of the better model depends on the specific context and goals. If the goal is to minimize the overall magnitude of errors, choose Model A, 
+         as it has a lower RMSE. But if the goal is to minimize the average magnitude of errors, Model B, with the lower MAE, may be preferred. 
+         However, both metrics have limitations as they treat all errors equally.
+
+Q10. You are comparing the performance of two regularized linear models using different types of regularization. 
+        Model A uses Ridge regularization with a regularization parameter of 0.1, while Model B uses Lasso regularization with a regularization parameter of 0.5. 
+        Which model would you choose as the better performer, and why? Are there any trade-offs or limitations to your choice of regularization method?
+        
+    Ans: The choice of the better performing model depends on the specific context and goals of the analysis. Ridge regularization (Model A) is better suited for situations 
+         where there are many variables with small effects. Lasso regularization (Model B) is better suited for situations where there are only a few variables with 
+         large effects. However, Lasso may perform feature selection, which may be an advantage or disadvantage depending on the situation. The choice of regularization 
+         method should be based on the specific goals and characteristics of the data.
