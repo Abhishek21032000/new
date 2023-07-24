@@ -1,0 +1,43 @@
+Q1. What is Ridge Regression, and how does it differ from ordinary least squares regression?
+
+    Ans: Ridge Regression is a type of linear regression that adds a penalty term to the ordinary least squares regression. 
+         This penalty term shrinks the coefficients of the regression model, reducing the impact of less important predictors and improving model performance 
+         in situations where there are many predictors.
+
+Q2. What are the assumptions of Ridge Regression?
+
+    Ans: Ridge regression assumes that the relationship between the dependent variable and independent variables is linear, and that the errors are normally distributed 
+         and have constant variance. Additionally, it assumes that the independent variables are not highly correlated with each other.
+
+Q3. How do you select the value of the tuning parameter (lambda) in Ridge Regression?
+
+    Ans: The value of the tuning parameter (lambda) in Ridge Regression is typically chosen using cross-validation. The data is split into several subsets, 
+         and the model is trained on each subset while being evaluated on the remaining data. The value of lambda that results in the best overall performance is chosen.
+
+Q4. Can Ridge Regression be used for feature selection? If yes, how?
+
+    Ans: Ridge regression can't perform feature selection, unlike Lasso regression. Ridge regression shrinks the coefficients of all variables towards zero, 
+         but it doesn't set any coefficients to exactly zero. Thus, all variables contribute to the model to some extent, and Ridge regression is used when 
+         all variables are thought to be important.
+
+Q5. How does the Ridge Regression model perform in the presence of multicollinearity?
+
+    Ans: Ridge regression is designed to handle multicollinearity, which is a situation where two or more independent variables are highly correlated with each other. 
+         The Ridge regression model adds a penalty term to the loss function, which shrinks the regression coefficients towards zero. 
+         This helps to reduce the impact of multicollinearity on the model's performance.
+
+Q6. Can Ridge Regression handle both categorical and continuous independent variables?
+
+    Ans: Yes, Ridge Regression can handle both categorical and continuous independent variables. In Ridge Regression, all variables are treated equally, 
+         and the regularization penalty is applied to all variables regardless of their type. Therefore, the model can handle a mix of categorical and continuous variables.
+
+Q7. How do you interpret the coefficients of Ridge Regression?
+
+    Ans: The coefficients of Ridge Regression represent the change in the dependent variable for each unit change in the independent variable while controlling 
+         for other variables. However, unlike in linear regression, the coefficients in Ridge Regression are shrunk towards zero to reduce overfitting. 
+         Thus, the magnitude of the coefficients should be interpreted in relation to the value of the regularization parameter used in the model.
+
+Q8. Can Ridge Regression be used for time-series data analysis? If yes, how?
+
+    Ans: Yes, Ridge Regression can be used for time-series data analysis. It can be used to reduce the effects of multicollinearity and improve the accuracy of predictions. 
+         The regularization parameter can be tuned to balance the trade-off between bias and variance. 
